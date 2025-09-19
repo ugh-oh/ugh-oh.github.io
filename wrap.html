@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wrestling Production</title>
+    <script src="https://cdn.jsdelivr.net/npm/vivus@latest/dist/vivus.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js"></script>
+  <script src="svgGame.js?v=1.1"></script>
+    <link rel="stylesheet" href="city.css">
+</head>
+<body>
+<nav id="top-navbar" style="width: 100vw; height: 40px; background: #222; color: #fff; display: flex; align-items: center; padding: 0 24px; position: fixed; top: 0; left: 0; z-index: 2000;">
+  <label for="navbar-dropdown" style="margin-right: 12px; font-size: 1em;">Select Option:</label>
+  <select id="navbar-dropdown" style="height: 28px; font-size: 1em; margin-right: 12px;">
+    <option value="option1">Option 1</option>
+    <option value="option2">Option 2</option>
+    <option value="option3">Option 3</option>
+    <option value="option4">Option 4</option>
+    <option value="option5">Option 5</option>
+    <option value="option6">Option 6</option>
+  </select>
+  <button id="randomize-theme" style="height: 28px; font-size: 0.9em; padding: 0 10px;">Randomize</button>
+</nav>
+<div style="height: 40px;"></div> <!-- Spacer for navbar -->
+<div id="svg-container"></div>
+
+<!-- Custom context menu -->
+<div id="custom-context-menu" class="context-menu">
+</div>
+<script>
+const lotIds = [
+    'lot-music', 'lot-development', 'lot-marketing', 'lot-writing',
+    'lot-back-office', 'lot-venue', 'lot-camera', 'lot-editing'
+];
+document.addEventListener('DOMContentLoaded', function() {
+    const svgGameInstance = new SVGGame('city.svg', 'svg-container', 'custom-context-menu', lotIds);
+    // Theme handling is wired up inside SVGGame.setupOptions()
+});
+</script>
+</body>
+</html>

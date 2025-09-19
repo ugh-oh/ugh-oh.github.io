@@ -1,0 +1,112 @@
+/* Inline styles moved from HTML */
+.context-menu-heading-desc { font-size: 0.75em;
+padding: 12px 18px 8px 18px;
+border-bottom: 1px solid #333; }
+
+.context-menu-columns { font-size: 0.7em;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 6px 14px 6px 14px;
+background: #222;
+color: #bbb;
+border-bottom: 1px solid #333; }
+
+.context-menu-columns > div:first-child {
+flex: 1;
+font-weight: 600;
+letter-spacing: 0.5px;
+}
+
+.context-menu-columns > div:last-child {
+margin-left: 16px;
+font-weight: 600;
+letter-spacing: 0.5px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #000000;
+}
+
+#svg-container {
+    width: 100vw;
+    height: calc(100vw / 1.398); /* Aspect ratio from viewBox: 2727.43 / 1951.2 */
+    max-width: 100vw;
+    max-height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.context-menu { display: none;
+    position: absolute;
+    z-index: 1000;
+    min-width: 180px;
+    max-width: 300px;
+    width: 300px;
+    background: #222;
+    color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+    padding: 0;
+    font-family: sans-serif; }
+.context-menu-heading { padding: 10px 10px 10px 10px;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #fff;
+    border-bottom: 1px solid #333;
+    cursor: default; }
+.context-menu-option { display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 14px 6px 14px;
+    cursor: pointer;
+    border-bottom: 1px solid #333;
+    background: none;
+    transition: background 0.2s; }
+.context-menu-option.selected { background: #00c5c5;
+    color: #222; }
+.context-menu-option.selected .context-menu-desc { font-size: 0.75em;
+    color: #bbb;
+    margin: 0;
+    flex: 1; }
+.context-menu-option.selected .context-menu-price { font-size: 1em;
+    font-weight: bold;
+    color: #00c5c5;
+    margin-left: 16px; }
+
+.context-menu-option:last-child {
+    border-bottom: none;
+}
+.context-menu-option:hover {
+    background: #333;
+}
+.context-menu-desc { font-size: 0.75em;
+    color: #bbb;
+    margin: 0;
+    flex: 1; }
+.context-menu-price { font-size: 1em;
+    font-weight: bold;
+    color: #00c5c5;
+    margin-left: 16px; }
+
+    #lot-music:hover,
+    #lot-development:hover,
+    #lot-marketing:hover,
+    #lot-writing:hover,
+    #lot-back-office:hover,
+    #lot-venue:hover,
+    #lot-camera:hover,  
+    #lot-editing:hover {
+        filter: drop-shadow(0 0 25px rgba(0, 197, 197, 0.5));
+        transition: filter 0.3s ease;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        transform: scale(1.003);
+        transform-origin: center;
+}
