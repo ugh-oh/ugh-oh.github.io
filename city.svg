@@ -5,15 +5,24 @@
       --city-stroke: #fff;
       --city-accent: #00c5c5;
       --city-fill: #000;
-      --city-gradient-stop-0: #000;
-      --city-gradient-stop-1: #005d5d;
+      --city-gradient-linear-0: #000;
+      --city-gradient-linear-1: #005d5d;
+      --city-gradient-radial-0: #000;
+      --city-gradient-radial-1: #408f77ff;
+      
     }
 
 .stop-0 {
-    stop-color: var(--city-gradient-stop-0)
+    stop-color: var(--city-gradient-linear-0)
     }
 .stop-1 {
-    stop-color: var(--city-gradient-stop-1)
+    stop-color: var(--city-gradient-linear-1)
+    }
+.stop-2 {
+    stop-color: var(--city-gradient-radial-0)
+    }
+.stop-3 {
+    stop-color: var(--city-gradient-radial-1)
     }
   .highline, .cls-19, .cls-41, .cls-43, .cls-53, ._05pxw, ._05pxwtrans, .cls-64, ._05pxb, .cls-91, .cls-93, .cls-95, .cls-96, .cls-97, .cls-100 {
     stroke-width: 0.5px
@@ -269,8 +278,8 @@
       <path class="_05pxb" d="M47,25.71c1.08-2.3-1.35-4.81-3.67-3.81-.57-1.14-3-1.18-3.52-.1.5-2.38-.93-5.27-3.82-4.21-.56-1.15-3-1.17-3.52-.11.18-2.19-.82-5.35-3.93-4.22-.55-1.14-3-1.18-3.51-.1.5-2.38-.94-5.27-3.83-4.21-.86-1.65-3.03-.47-3.89-.19,1.08-2.29-1.35-4.82-3.67-3.82-.42-.7-1.88-1.31-2.82-.69.48-2.16-1.83-4.05-3.87-3.17C5.34-1.18-.97,1.61,1.72,4.32c-1.82-.1-2.11,2.19.05,3.21-.29,3.07,3.15,4.13,4.34,2.19-.28,1.31,1.21,2.36,2.36,1.67-.31,3.06,3.16,4.14,4.33,2.19.79,1.07,2.38,1.72,3.23,1.82-.29,3.07,3.15,4.13,4.34,2.19-.26,1.5,1.17,2.1,3,2.12-.29,3.06,3.16,4.12,4.34,2.19-.46,1.94,2.14,3,3.11,2.14-.56,2.42,2.9,4.44,4.33,2.19-.13,1.09,1.77,2.7,3.01,2.12-.31,3.07,3.16,4.12,4.33,2.19,1.23,1.22,3.33-.27,2.58-1.83,2.33.92,2.8-1,1.93-3Z"/>
     </symbol>
     <radialGradient id="round-light" gradientUnits="objectBoundingBox">
-      <stop offset="0" class="stop-1" stop-opacity=".3"/>
-      <stop offset="1" class="stop-0" stop-opacity="0"/>
+      <stop offset="0" class="stop-3" stop-opacity=".3"/>
+      <stop offset="1" class="stop-2" stop-opacity="0"/>
 
     </radialGradient>
     <symbol id="light-tower" viewBox="0 0 55.61 119.45">
@@ -489,8 +498,8 @@
       </g>
     </symbol>
     <linearGradient id="linear-gradient-23" gradientUnits="objectBoundingBox">
-      <stop offset="0" stop-color="#005d5d" stop-opacity=".14"/>
-      <stop offset="1" stop-color="#00c5c5" stop-opacity=".3"/>
+      <stop offset="0" class="stop-0" stop-opacity="0"/>
+      <stop offset="1" class="stop-1" stop-opacity=".3"/>
     </linearGradient>
     <symbol id="window0l" viewBox="0 0 8.66 17.55">
       <g>
@@ -613,8 +622,8 @@
       </g>
     </pattern>
     <linearGradient id="spotlight" gradientUnits="objectBoundingBox">
-      <stop offset="0" stop-color="#000" stop-opacity="0"/>
-      <stop offset="1" stop-color="#00c5c5" stop-opacity=".3"/>
+      <stop offset="0" class="stop-3" stop-opacity="0"/>
+      <stop offset="1" class="stop-2" stop-opacity=".3"/>
     </linearGradient>
   </defs>
   <g id="unclickable">

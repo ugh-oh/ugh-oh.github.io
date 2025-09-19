@@ -110,42 +110,82 @@ class SVGGame {
         accent: '#00c5c5',
         fill: '#000',
         stop0: '#000',
-        stop1: '#00c5c5'
+        stop1: '#00c5c5',
+        stop2: '#000',
+        stop3: '#408f77ff'  
       },
       option2: {
-        stroke: '#000',
-        accent: 'red',
-        fill: '#fff',
-        stop0: '#fff',
-        stop1: 'red'
+        stroke: '#ffffffff',
+        accent: '#b6e9f0ff',
+        fill: '#142f88ff',
+        stop0: '#2142afff',
+        stop1: '#40adbbff',
+        stop2: '#2142afff',
+        stop3: '#6bf369ff'
       },
       option3: {
-        stroke: '#776424ff',
-        accent: '#ff9f1a',
-        fill: '#0b0b0b',
-        stop0: '#0b0b0b',
-        stop1: '#ff9f1a'
+        stroke: '#000000ff',
+        accent: '#727272ff',
+        fill: '#fff',
+        stop0: '#fff',
+        stop1: '#727272ff',
+        stop2: '#4b4b4bff',
+        stop3: '#bbbbbbff'
       },
       option4: {
-        stroke: '#ffffff',
-        accent: '#7c4dff',
-        fill: '#101522',
-        stop0: '#101522',
-        stop1: '#7c4dff'
+        stroke: '#ffc400ff',
+        accent: '#ffffffff',
+        fill: '#0b0b0b',
+        stop0: '#0b0b0b',
+        stop1: '#ff9f1a',
+        stop2: '#776424ff',
+        stop3: '#ffbb00ff'
       },
       option5: {
+        stroke: '#ffbc00ff',
+        accent: '#696180ff',
+        fill: '#401a46ff',
+        stop0: '#833AB4',
+        stop1: '#ff0000',
+        stop2: '#ff0000',
+        stop3: '#c54fc9ff'
+      },
+      option6: {
         stroke: '#419e39ff',
         accent: '#00e676',
         fill: '#000000',
         stop0: '#000000',
-        stop1: '#00e676'
+        stop1: '#00e676', 
+        stop2: '#000000',
+        stop3: '#00e676'
       },
-      option6: {
-        stroke: '#000000',
-        accent: '#03a9f4',
-        fill: '#f5f5f5',
-        stop0: '#f5f5f5',
-        stop1: '#03a9f4'
+      option7: {
+        stroke: '#ffffffff',
+        accent: '#ff0000ff',
+        fill: '#000000ff',
+        stop0: '#363636ff',
+        stop1: '#808080ff',
+        stop2: '#000000',
+        stop3: '#ff0000ff'
+      },
+
+      option8: {
+        stroke: '#ff67fb',
+        accent: '#ffffffff',
+        fill: '#1f1f4e',
+        stop0: '#f90000',
+        stop1: '#00b8ff',
+        stop2: '#004ba1',
+        stop3: '#00ff66'
+      },
+      option9: {
+        stroke: '#ff763fff',
+        accent: '#ffc21aff',
+        fill: '#250000ff',
+        stop0: '#472323ff',
+        stop1: '#ffffffff',
+        stop2: '#472323ff',
+        stop3: '#ffd105ff'
       }
     };
 
@@ -178,8 +218,10 @@ class SVGGame {
     this.svgEl.style.setProperty('--city-stroke', t.stroke);
     this.svgEl.style.setProperty('--city-accent', t.accent);
     this.svgEl.style.setProperty('--city-fill', t.fill);
-    this.svgEl.style.setProperty('--city-gradient-stop-0', t.stop0);
-    this.svgEl.style.setProperty('--city-gradient-stop-1', t.stop1);
+    this.svgEl.style.setProperty('--city-gradient-linear-0', t.stop0);
+    this.svgEl.style.setProperty('--city-gradient-linear-1', t.stop1);
+    this.svgEl.style.setProperty('--city-gradient-radial-0', t.stop2);
+    this.svgEl.style.setProperty('--city-gradient-radial-1', t.stop3);
   }
 
   // Create a random theme ensuring fill==stop0 and accent==stop1
@@ -188,8 +230,15 @@ class SVGGame {
     let stroke = randColor();
     let fill = randColor();
     let accent = randColor();
+    let light = randColor();
+    let glass = randColor();
     // Avoid identical fill and accent for variety
     let safety = 0;
+    // Ensure that there is sufficient difference between stroke and fill
+    while (fill.toLowerCase() === stroke.toLowerCase() && safety < 5) {
+      stroke = randColor();
+      safety++;
+    }
     while (fill.toLowerCase() === accent.toLowerCase() && safety < 5) {
       accent = randColor();
       safety++;
@@ -199,7 +248,9 @@ class SVGGame {
       accent,
       fill,
       stop0: fill,
-      stop1: accent
+      stop1: glass,
+      stop2: fill,
+      stop3: light
     };
   }
 
@@ -244,7 +295,7 @@ class SVGGame {
 
 
 
-animateGroupOut(groupId, duration = 2000, direction = 'out') {
+animateGroup(groupId, duration = 2000, direction = 'out') {
   const groupEl = this.svgEl.querySelector(`#${groupId}`);
   if (!groupEl) return;
   const vivus = new Vivus(groupEl, {
@@ -305,7 +356,7 @@ animateGroupOut(groupId, duration = 2000, direction = 'out') {
       optionEls.forEach((optionEl, idx) => {
         optionEl.addEventListener('click', () => {
           this.menu.style.display = 'none';
-          this.animateGroupOut(lotId, 2000, 'out');
+          this.animateGroup(lotId, 2000, 'out');
         });
       });
   }
