@@ -187,10 +187,71 @@ class SVGGame {
         stop3: '#ffd105ff'
       }
     };
+    this.svgSymbols = [
+      "benchl",
+      "benchr",
+      "bigbush",
+      "bus",
+      "car",
+      "dish",
+      "doors",
+      "doors-triple",
+      "dumpster",
+      "entrance",
+      "girder",
+      "globe",
+      "half-cylinder",
+      "hangar-2",
+      "hedge",
+      "light-tower",
+      "plinth",
+      "ring",
+      "tank",
+      "trailer",
+      "tree",
+      "tree-2",
+      "tree-3",
+      "truck-cab",
+      "truck-oil",
+      "wedge",
+      "window-fancy-right",
+      "window-tall-left",
+      "window0l",
+      "window0r",
+      "window1l",
+      "window2r",
+      "window3l",
+      "window3r",
+      "window4l",
+      "window5l",
+      "window5r"
+    ];
+
+    //populate dropdown with elements
+    const dropdown2 = document.getElementById('navbar-dropdown2');
+    if (dropdown2) {
+      this.svgSymbols.forEach(symbol => {
+        const option = document.createElement('option');
+        option.value = symbol;
+        option.textContent = symbol;
+        dropdown2.appendChild(option);
+      });
+    }
+    // Add event listener to randomize item button
+    const randomizeItemBtn = document.getElementById('randomize-item');
+    if (randomizeItemBtn) {
+      randomizeItemBtn.addEventListener('click', () => {
+        //check dropdown2 for selected value
+        const dropdown2 = document.getElementById('navbar-dropdown2');
+        const item = dropdown2?.value;
+        if (item) {
+        this.changeElementColors(item);
+        }
+      });
+    }
 
     // Apply option1 by default
     this.applyTheme('option1');
-
     const dropdown = document.getElementById('navbar-dropdown');
     if (dropdown) {
       dropdown.addEventListener('change', (e) => {
@@ -209,6 +270,33 @@ class SVGGame {
       });
     }
   }
+//a function which changes the fill and stroke colors of a specific svg element by id
+  changeElementColors(elementId) {
+    const randColor = () => '#' + Math.floor(Math.random() * 0xffffff).toString(16).padStart(6, '0');
+    //select the symbol with the given id
+    const element = this.svgEl.querySelector(`#${elementId}`);
+    if (!element) return;
+    //go through the symbol and any shapes paths etc change their fill and stroke to the same 2 random colors
+    const fillColor = randColor();
+    const strokeColor = randColor();
+    const children = element.querySelectorAll('*');
+    children.forEach(child => {
+//read all classes of a child
+const classes = Array.from(child.classList);
+//for each class,check if it contains a property for fill: none
+classes.forEach(cls => {
+  const style = getComputedStyle(child);
+  if (style.fill !== 'none') {
+    child.style.setProperty('fill', fillColor, 'important');
+  }
+  if (style.stroke !== 'none') {
+    child.style.setProperty('stroke', strokeColor, 'important');
+  }
+});
+    });
+
+  }
+
 
   // Apply a theme by name or by direct object
   applyTheme(theme) {
