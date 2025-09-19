@@ -168,7 +168,6 @@ class SVGGame {
         stop2: '#000000',
         stop3: '#ff0000ff'
       },
-
       option8: {
         stroke: '#ff67fb',
         accent: '#ffffffff',
